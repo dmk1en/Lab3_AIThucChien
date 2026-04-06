@@ -33,7 +33,7 @@ def create_provider(provider_name: str, model_name: Optional[str] = None):
         api_key = os.getenv("OPENAI_API_KEY")
         if not api_key:
             raise ValueError("Missing OPENAI_API_KEY in .env")
-        model = model_name or os.getenv("DEFAULT_MODEL", "gpt-4o")
+        model = model_name or os.getenv("DEFAULT_MODEL", "gpt-4o-mini")
         return OpenAIProvider(model_name=model, api_key=api_key)
 
     if provider in {"google", "gemini"}:

@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 from src.agent.agent import ReActAgent
 from src.tools.ecommerce_tools import ECOMMERCE_TOOLS_SPEC
 from src.core.openai_provider import OpenAIProvider
-# from src.core.local_provider import LocalProvider
-# from src.core.gemini_provider import GeminiProvider
+from src.core.local_provider import LocalProvider
+from src.core.gemini_provider import GeminiProvider
 
 
 def get_provider():
@@ -18,7 +18,7 @@ def get_provider():
         if not api_key:
             print("❌ Lỗi: OPENAI_API_KEY chưa được thiết lập trong file .env")
             sys.exit(1)
-        return OpenAIProvider(model_name="gpt-4o", api_key=api_key)
+        return OpenAIProvider(model_name="gpt-4o-mini", api_key=api_key)
         
     elif provider_name == "gemini":
         api_key = os.getenv("GEMINI_API_KEY")
